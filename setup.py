@@ -4,7 +4,7 @@ from setuptools import setup
  
 setup (
     name = "tt",
-    version = "0.1",
+    version = "0.2",
     description="(tt) - time tracker",
     long_description="lightweight command line tool to track time for projects",
     author="Antonino Catinello",
@@ -13,7 +13,6 @@ setup (
     license = "MIT",
     packages = ['tt'],
     classifiers=[
-        "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
         "License :: OSI Approved :: MIT License",
     ], 

@@ -15,28 +15,34 @@ Lightweight command line tool to track time for projects.
 
 Create a new project and start a session:
 
-    # tt --start newproject
+    $ tt --start newproject
     Project newproject was created.
 
 Stop a running session:
 
-    # tt --stop newproject
+    $ tt --stop newproject
     Session: 6.9066 minutes
 
 List all sessions with a calculated total amount of hours:
 
-    # tt --list newproject
+    $ tt --list newproject
     Session: Fri 09. August 2013 11:06 -> Fri 09. August 2013 11:13 -> 6.906 min
     Session: Fri 09. August 2013 11:14 -> Fri 09. August 2013 11:17 -> 3.292 min
     Total: 0.1699 hours
 
 ##Logging:##
 
-Every start or stop command is log via syslog to reaudit later.
+Every start or stop command is logged via syslog to reaudit later.
+
+    # grep newproject /var/log/syslog
+    Aug  9 11:06:05 dev /usr/local/bin/tt[30948]: --start -> newproject
+    Aug  9 11:13:00 dev /usr/local/bin/tt[30958]: --stop -> newproject
+    Aug  9 11:14:06 dev /usr/local/bin/tt[30961]: --start -> newproject
+    Aug  9 11:17:24 dev /usr/local/bin/tt[30968]: --stop -> newproject
 
 ##Data:##
 
 All project data is stored in the home directory of the user. 
 
-    # ls ~/.tt
+    $ ls ~/.tt
     newproject
