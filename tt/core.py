@@ -43,7 +43,7 @@ def main():
 	for opt, arg in options:
 		if opt in ('--start'):
 			syslog.syslog(opt + " -> " + str(arg))
-			db = data.File(datastore + os.sep + str(arg))
+			db = tt.data.File(datastore + os.sep + str(arg))
 
 			if db.lastid() % 2 != 0:
 				if db.lastid() == 1:
@@ -55,14 +55,14 @@ def main():
 		elif opt in ('--stop'):
 			if os.path.exists(datastore + os.sep + str(arg)):
 				syslog.syslog(opt + " -> " + str(arg))
-				db = data.File(datastore + os.sep + str(arg))
+				db = tt.data.File(datastore + os.sep + str(arg))
 
 				if db.lastid() % 2 == 0:
 					start = db.get(db.lastid())
 					db.set(time.time())
 					end = db.get(db.lastid())
 					diff = datetime.datetime.fromtimestamp(end) - datetime.datetime.fromtimestamp(start)
-					print "Session: " + str(diff.total_seconds()) + " seconds"
+					print "Session: " + str(diff.total_seconds()/60)[0:6] + " minutes"
 				else:
 					print "No session running for " + arg + "."
 					retval = 3 #return value 3 -> session already used
@@ -71,7 +71,7 @@ def main():
 				retval = 2 #return value 2 -> project does not exist
 		elif opt in ('--list'):
 			if os.path.exists(datastore + os.sep + str(arg)):
-				db = data.File(datastore + os.sep + str(arg))
+				db = tt.data.File(datastore + os.sep + str(arg))
 				list = db.dump()
 				#print list
 				#print list.keys()
@@ -84,7 +84,7 @@ def main():
 					print "Session: " + str(datetime.datetime.fromtimestamp(float(list[str(i)])).strftime("%a %d. %B %Y %H:%M")) + " -> " + \
 						str(datetime.datetime.fromtimestamp(float(list[str(i+1)])).strftime("%a %d. %B %Y %H:%M")) + " -> " + \
 						str(session.total_seconds()/60)[0:5] + " min"
-				print "Total: " + str(total/60) + " minutes"
+				print "Total: " + str(total/60/60)[0:6] + " hours"
 			else:
 				print "Project " + arg + " does not exist."
 				retval = 2 #return value 2 -> project does not exist
