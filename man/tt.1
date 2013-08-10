@@ -1,0 +1,29 @@
+.TH tt 1  "August 10, 2013" "Version 0.2" "USER COMMANDS"
+.SH NAME
+Time Tracker (tt) \- Lightweight command line tool to track time for projects.
+.SH SYNOPSIS
+.B tt
+{--start|--stop|--list} [PROJECT]
+.SH DESCRIPTION
+Time Tracker can be used for every time consuming activity. It stores data to file in ~/.tt and also 
+logs start and stop commands to your syslog facility. 
+.SH COMMANDS
+.TP
+--start [PROJECT]
+Starts a session and creates the project if the file did not exist.
+.TP
+--stop [PROJECT]
+Stops a session if there is a running session active.
+.TP
+--list [PROJECT]
+Lists an overview of all sessions related to that project and sums up the total amount of activity hours.
+.SH EXIT STATUS
+0 = success
+1 = usage error
+2 = project does not exist
+3 = session already running
+.SH LICENSE
+MIT-License
+.SH AUTHOR
+Antonino Catinello (ac (at) antoo.org)
+
