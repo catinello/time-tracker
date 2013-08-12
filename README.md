@@ -46,3 +46,13 @@ All project data is stored in the home directory of the user.
 
     $ ls ~/.tt
     newproject
+
+##License:##
+
+[&copy; Antonino Catinello][HOME]
+
+[MIT-License][MIT]]
+
+[MIT]:https://github.com/catinello/tt/blob/master/LICENSE
+[HOME]:http://antonino.catinello.eu
+
