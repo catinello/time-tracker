@@ -22,6 +22,9 @@ def main():
 	datastore = os.environ['HOME'] + os.sep + ".tt"
 	retval = 0 #default return value -> success
 
+	#constant
+	IDFIX = 1000000
+
 	#every call has 3 arguments
 	if len(sys.argv) != 3:
 		usage()
@@ -43,7 +46,7 @@ def main():
 	for opt, arg in options:
 		if opt in ('--start'):
 			syslog.syslog(opt + " -> " + str(arg))
-			db = tt.data.File(datastore + os.sep + str(arg))
+			db = tt.data.File(datastore + os.sep + str(arg), IDFIX)
 
 			if db.lastid() % 2 != 0:
 				if db.lastid() == 1:
@@ -55,7 +58,7 @@ def main():
 		elif opt in ('--stop'):
 			if os.path.exists(datastore + os.sep + str(arg)):
 				syslog.syslog(opt + " -> " + str(arg))
-				db = tt.data.File(datastore + os.sep + str(arg))
+				db = tt.data.File(datastore + os.sep + str(arg), IDFIX)
 
 				if db.lastid() % 2 == 0:
 					start = db.get(db.lastid())
@@ -71,19 +74,18 @@ def main():
 				retval = 2 #return value 2 -> project does not exist
 		elif opt in ('--list'):
 			if os.path.exists(datastore + os.sep + str(arg)):
-				db = tt.data.File(datastore + os.sep + str(arg))
+				db = tt.data.File(datastore + os.sep + str(arg), IDFIX)
 				list = db.dump()
-				#print list
-				#print list.keys()
 				total = 0
-				for i in range(1000000, len(list)+1000000-1, 2):
-					#print i, list[str(i)]
-					#print i + 1, list[str(i+1)]
+
+				for i in range(IDFIX, len(list)+IDFIX-1, 2):
 					session = datetime.datetime.fromtimestamp(float(list[str(i+1)])) - datetime.datetime.fromtimestamp(float(list[str(i)]))
 					total += session.total_seconds()
+
 					print "Session: " + str(datetime.datetime.fromtimestamp(float(list[str(i)])).strftime("%a %d. %B %Y %H:%M")) + " -> " + \
 						str(datetime.datetime.fromtimestamp(float(list[str(i+1)])).strftime("%a %d. %B %Y %H:%M")) + " -> " + \
 						str(session.total_seconds()/60)[0:5] + " min"
+
 				print "Total: " + str(total/60/60)[0:6] + " hours"
 			else:
 				print "Project " + arg + " does not exist."

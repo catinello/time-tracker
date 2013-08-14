@@ -7,9 +7,9 @@ import bsddb
 class File(object):
 	'''handle dataobject i/o'''
 
-	def __init__(self, project):
+	def __init__(self, project, idfix):
 		self.project = project
-		self.idfix = 1000000
+		self.idfix = idfix
 
 	def dump(self):
 		db = bsddb.btopen(self.project, 'c')
