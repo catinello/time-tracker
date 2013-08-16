@@ -4,8 +4,7 @@ from setuptools import setup
 import sys
 
 if sys.version_info[:2] != (2, 7):
-        print "Need Python 2.7.x"
-	sys.exit(1)
+	raise Exception("Need Python 2.7.x")
  
 setup (
     name = "tt",
