@@ -11,6 +11,10 @@ Lightweight command line tool to track time for projects.
 
     Usage: tt {--start|--stop|--list} [PROJECT]
 
+##Requirements:##
+
+Python 2.7 (tested on Debian and Ubuntu)
+
 ##Examples:##
 
 Create a new project and start a session:
