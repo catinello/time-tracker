@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 
 from setuptools import setup
+import sys
+
+if sys.version_info[:2] != (2, 7):
+        print "Need Python 2.7.x"
+	sys.exit(1)
  
 setup (
     name = "tt",
