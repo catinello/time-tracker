@@ -8,7 +8,7 @@ if sys.version_info[:2] != (2, 7):
  
 setup (
     name = "tt",
-    version = "0.2",
+    version = "0.3",
     description="(tt) - time tracker",
     long_description="lightweight command line tool to track time for projects",
     author="Antonino Catinello",
