@@ -5,10 +5,10 @@ PY = python
 
 all: install
 
-install: man bashcomp
+install: docs bashcomp
 	$(PY) setup.py install
 
-man: man/tt.1
+docs: man/tt.1
 	$(CP) man/tt.1 /usr/share/man/man1/tt.1
 	$(GZ) /usr/share/man/man1/tt.1
 

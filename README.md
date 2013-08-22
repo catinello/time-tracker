@@ -10,7 +10,7 @@ A lightweight command line tool to track time for projects or whatever you want.
 ##Alternative:##
 
     # wget https://github.com/catinello/tt/archive/0.2.tar.gz
-    # tar xvzf tt-0.2.tar.gz; cd tt-0.2
+    # tar xvzf 0.2.tar.gz; cd tt-0.2
     # make install
 
 ##Usage:##
