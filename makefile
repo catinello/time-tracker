@@ -1,4 +1,4 @@
-CP = cp -a
+IN = install
 GZ = gzip -f
 RM = rm -rf
 PY = python
@@ -9,11 +9,11 @@ install: docs bashcomp
 	$(PY) setup.py install
 
 docs: man/tt.1
-	$(CP) man/tt.1 /usr/share/man/man1/tt.1
+	$(IN) man/tt.1 /usr/share/man/man1/tt.1
 	$(GZ) /usr/share/man/man1/tt.1
 
 bashcomp: contrib/tt-completion.bash
-	$(CP) contrib/tt-completion.bash /etc/bash_completion.d/tt
+	$(IN) -m 755 contrib/tt-completion.bash /etc/bash_completion.d/tt
 
 uninstall:
 	$(RM) /etc/bash_completion.d/tt
