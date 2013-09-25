@@ -5,12 +5,12 @@ A lightweight command line tool to track time for projects or whatever you want.
 
 ##Installation:##
 
-    # pip install https://github.com/catinello/tt/archive/0.2.tar.gz
+    # pip install https://github.com/catinello/tt/archive/0.3.tar.gz
 
 ##Alternative:##
 
-    # wget https://github.com/catinello/tt/archive/0.2.tar.gz
-    # tar xvzf 0.2.tar.gz; cd tt-0.2
+    # wget https://github.com/catinello/tt/archive/0.3.tar.gz
+    # tar xvzf 0.3.tar.gz; cd tt-0.3
     # make install
 
 ##Usage:##
