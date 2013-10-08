@@ -77,16 +77,22 @@ def main():
 				db = tt.data.File(datastore + os.sep + str(arg), IDFIX)
 				list = db.dump()
 				total = 0
+				counter = 0
 
 				for i in range(IDFIX, len(list)+IDFIX-1, 2):
 					session = datetime.datetime.fromtimestamp(float(list[str(i+1)])) - datetime.datetime.fromtimestamp(float(list[str(i)]))
 					total += session.total_seconds()
+					counter += 1
 
 					print "Session: " + str(datetime.datetime.fromtimestamp(float(list[str(i)])).strftime("%a %d. %B %Y %H:%M")) + " -> " + \
 						str(datetime.datetime.fromtimestamp(float(list[str(i+1)])).strftime("%a %d. %B %Y %H:%M")) + " -> " + \
 						str(session.total_seconds()/60)[0:5] + " min"
 
-				print "Total: " + str(total/60/60)[0:6] + " hours"
+				sessions = counter
+				if counter == 0:
+					counter = 1
+
+				print "Total: " + str(total/60/60)[0:6] + " hours - Sessions: " + str(sessions) + " - Average: " + str((total/counter)/60)[0:6] + " min"
 			else:
 				print "Project " + arg + " does not exist."
 				retval = 2 #return value 2 -> project does not exist
