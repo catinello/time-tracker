@@ -3,25 +3,25 @@ Time Tracker (tt)
 
 A lightweight command line tool to track time for projects or whatever you want.
 
-##Installation:##
+## Installation:
 
     # pip install git+git://github.com/catinello/time-tracker.git
 
-##Alternative:##
+## Alternative:
 
     # wget https://github.com/catinello/time-tracker/archive/master.zip
     # unzip master.zip; cd time-tracker
     # make install
 
-##Usage:##
+## Usage:
 
     Usage: tt {--start|--stop|--list} [PROJECT]
 
-##Requirements:##
+## Requirements:
 
 Python 2.7 (tested on Debian and Ubuntu)
 
-##Examples:##
+## Examples:
 
 Create a new project and start a session:
 
@@ -40,7 +40,7 @@ List all sessions with a calculated total amount of hours:
     Session: Fri 09. August 2013 11:14 -> Fri 09. August 2013 11:17 -> 3.292 min
     Total: 0.1699 hours
 
-##Use case:##
+## Use case:
 
 Logging terminal bash sessions on tty relation with year + month tag:
 
@@ -59,7 +59,7 @@ Works great via ssh or chroot:
     Session: 4.3926 minutes
     Connection to 192.168.8.199 closed.
 
-##Logging:##
+## Logging:
 
 Every start or stop command is logged via syslog to reaudit later.
 
@@ -69,14 +69,14 @@ Every start or stop command is logged via syslog to reaudit later.
     Aug  9 11:14:06 dev /usr/local/bin/tt[30961]: --start -> newproject
     Aug  9 11:17:24 dev /usr/local/bin/tt[30968]: --stop -> newproject
 
-##Data:##
+## Data:
 
 All project data is stored in the home directory of the user. 
 
     $ ls ~/.tt
     newproject
 
-##License:##
+## License:
 
 [&copy; Antonino Catinello][HOME] - [MIT-License][MIT]
 
